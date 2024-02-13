@@ -91,6 +91,7 @@ export default {
   font-size: 2rem;
   padding: 5px 12px;
   z-index: 2;
+  cursor: pointer;
 }
 
 .heart:hover {
