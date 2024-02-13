@@ -1,12 +1,16 @@
 <script>
+import { store } from "./store";
+
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
 import AppFooter from "./components/AppFooter.vue";
+import AppModal from "./components/AppModal.vue";
 
 export default {
   data() {
     return {
       title: "Vite Boolando",
+      store,
       genders: [
         {
           text: "Donna",
@@ -45,12 +49,13 @@ export default {
     };
   },
 
-  components: { AppHeader, AppMain, AppFooter },
+  components: { AppHeader, AppMain, AppFooter, AppModal },
 };
 </script>
 
 <template>
   <app-header :links="genders"></app-header>
+  <app-modal v-if="store.modal.show"></app-modal>
   <app-main></app-main>
   <app-footer :infos="footerInfo"></app-footer>
 </template>

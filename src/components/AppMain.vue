@@ -16,6 +16,14 @@ export default {
       const imageUrl = new URL("../assets/img/" + imageName, import.meta.url);
       return imageUrl.href;
     },
+
+    handleCardOpen(productIndex) {
+      const selectProduct = this.products[productIndex];
+      store.modal.title = selectProduct.brand;
+      store.modal.price = selectProduct.price;
+      store.modal.description = selectProduct.name;
+      store.modal.show = true;
+    },
   },
 
   components: { AppCard },
@@ -32,13 +40,15 @@ export default {
   <main>
     <div class="container products">
       <app-card
-        v-for="product in products"
+        v-for="(product, index) in products"
+        :index="index"
         :imgFront="buildImagePath(product.frontImage)"
         :imgBack="buildImagePath(product.backImage)"
         :titleBrand="product.brand"
         :titleName="product.name"
         :oldPrice="product.price"
         :prodBadges="product.badges"
+        @card-open="handleCardOpen"
       ></app-card>
     </div>
   </main>

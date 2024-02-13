@@ -1,6 +1,7 @@
 <script>
 export default {
   props: {
+    index: Number,
     imgFront: String,
     imgBack: String,
     titleBrand: String,
@@ -8,11 +9,13 @@ export default {
     oldPrice: Number,
     prodBadges: Array,
   },
+
+  emits: ["card-open"],
 };
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" @click="$emit('card-open', this.index)">
     <img :src="imgFront" alt="" />
     <img :src="imgBack" alt="" class="second-img" />
     <p class="sale" v-for="prodBadge in prodBadges">
@@ -35,7 +38,7 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .card {
   width: calc(100% / 3 - 10px);
   margin: 5px;
