@@ -7,6 +7,41 @@ export default {
   data() {
     return {
       title: "Vite Boolando",
+      genders: [
+        {
+          text: "Donna",
+          url: "#",
+          current: false,
+        },
+        {
+          text: "Uomo",
+          url: "#",
+          current: false,
+        },
+        {
+          text: "Bambini",
+          url: "#",
+          current: false,
+        },
+      ],
+
+      footerInfo: [
+        {
+          text: "Informazioni legali",
+          url: "#",
+          current: false,
+        },
+        {
+          text: "Informativa sulla privacy",
+          url: "#",
+          current: false,
+        },
+        {
+          text: "Diritto di recesso",
+          url: "#",
+          current: false,
+        },
+      ],
     };
   },
 
@@ -15,9 +50,9 @@ export default {
 </script>
 
 <template>
-  <app-header></app-header>
+  <app-header :links="genders"></app-header>
   <app-main></app-main>
-  <app-footer></app-footer>
+  <app-footer :infos="footerInfo"></app-footer>
 </template>
 
 <style lang="scss">
